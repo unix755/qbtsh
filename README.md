@@ -11,7 +11,7 @@
    ▄████▄
 ```
 
-[中文说明](https://github.com/gek64/qbtsh/blob/main/README_chs.md)
+[中文说明](https://github.com/unix755/qbtsh/blob/main/README_chs.md)
 
 - Make `qBittorrent-nox` easier to install, uninstall and reload on `Linux` kernel system.
 - The application is installed in `/usr/local/bin/qbittorrent-nox`, and the application data is stored
@@ -48,7 +48,7 @@ GLOBAL OPTIONS:
 ```sh
 # For example, the host is a linux kernel based system with amd64 architecture
 # Download the app
-curl -Lo /usr/local/bin/qbtsh https://github.com/gek64/qbtsh/releases/latest/download/qbtsh-linux-amd64
+curl -Lo /usr/local/bin/qbtsh https://github.com/unix755/qbtsh/releases/latest/download/qbtsh-linux-amd64
 # Give the app execute permission
 chmod +x /usr/local/bin/qbtsh
 # Show help
@@ -59,7 +59,7 @@ chmod +x /usr/local/bin/qbtsh
 
 ```sh
 # Download application source code
-git clone https://github.com/gek64/qbtsh.git
+git clone https://github.com/unix755/qbtsh.git
 # Compile the source code
 cd qbtsh
 export CGO_ENABLED=0
@@ -76,12 +76,13 @@ go build -v -trimpath -ldflags "-s -w"
 ### Is there any way to get this working on FreeBSD?
 
 - You can try compiling a dynamically linked `qBittorrent-nox` yourself using the `qBittorrent-nox` build script I wrote
-  for `FreeBSD` [freebsd build](https://github.com/gek64/qbittorrent-nox), also I have already compiled binaries for the
+  for `FreeBSD` [freebsd build](https://github.com/unix755/qbittorrent-nox), also I have already compiled binaries for
+  the
   latest `FreeBSD`/`amd64`, you can also use them directly.
 
 ### How to access after running?
 
-- After the service runs successfully, you can access it at `SERVER_IP:8080`. The default user name is `admin`, and the
+- After the service runs successfully, you can access it at `SERVER_IP:8080`. The default username is `admin`, and the
   default password can be found in service log. Although you can use it normally at this time, I still recommend you to
   change the
   password in time, use reverse proxy that provided by `apache` or `nginx` and enable `https`, then

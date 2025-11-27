@@ -45,7 +45,7 @@ GLOBAL OPTIONS:
 ```sh
 # 例如宿主机是 amd64 架构的基于 linux 内核的系统
 # 下载应用
-curl -Lo /usr/local/bin/qbtsh https://github.com/gek64/qbtsh/releases/latest/download/qbtsh-linux-amd64
+curl -Lo /usr/local/bin/qbtsh https://github.com/unix755/qbtsh/releases/latest/download/qbtsh-linux-amd64
 # 给应用执行权限
 chmod +x /usr/local/bin/qbtsh
 # 查看帮助
@@ -56,7 +56,7 @@ chmod +x /usr/local/bin/qbtsh
 
 ```sh
 # 下载应用源代码
-git clone https://github.com/gek64/qbtsh.git
+git clone https://github.com/unix755/qbtsh.git
 # 编译源代码
 cd qbtsh
 export CGO_ENABLED=0
@@ -73,7 +73,7 @@ go build -v -trimpath -ldflags "-s -w"
 ### 有什么办法能在FreeBSD上使用吗?
 
 - 你可以使用我为FreeBSD系统编写的 `qBittorrent-nox`
-  编译脚本来尝试自行编译动态链接的 `qBittorrent-nox` [freebsd build](https://github.com/gek64/qbittorrent-nox)
+  编译脚本来尝试自行编译动态链接的 `qBittorrent-nox` [freebsd build](https://github.com/unix755/qbittorrent-nox)
   ，我已经为最新的FreeBSD系统编译好了 `amd64` 架构的二进制文件，你也可以直接使用。
 
 ### 运行以后该如何访问?

@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/gek64/gek/gApp"
-	"github.com/gek64/gek/gDownloader"
 	"os"
+
+	"github.com/unix755/xtools/xApp"
+	"github.com/unix755/xtools/xDownloader"
 )
 
 func installBinaryFile(tagName string) (err error) {
@@ -11,7 +12,7 @@ func installBinaryFile(tagName string) (err error) {
 	if err != nil {
 		return err
 	}
-	err = gDownloader.Download(downloadURL, "/usr/local/bin/qbittorrent-nox", "")
+	err = xDownloader.Download(downloadURL, "/usr/local/bin/qbittorrent-nox", "")
 	if err != nil {
 		return err
 	}
@@ -25,7 +26,7 @@ func installService() (err error) {
 		return err
 	}
 	// 初始化服务
-	service, err := gApp.NewService(initSystem, "qbittorrent.service", serviceContent)
+	service, err := xApp.NewService(initSystem, "qbittorrent.service", serviceContent)
 	if err != nil {
 		return err
 	}
@@ -53,7 +54,7 @@ func uninstallService() (err error) {
 		return err
 	}
 	// 初始化服务
-	service, err := gApp.NewService(initSystem, "qbittorrent.service", serviceContent)
+	service, err := xApp.NewService(initSystem, "qbittorrent.service", serviceContent)
 	if err != nil {
 		return err
 	}
@@ -73,7 +74,7 @@ func updateBinaryFile(tagName string) (err error) {
 		return err
 	}
 	// 初始化服务
-	service, err := gApp.NewService(initSystem, "qbittorrent.service", serviceContent)
+	service, err := xApp.NewService(initSystem, "qbittorrent.service", serviceContent)
 	if err != nil {
 		return err
 	}
@@ -98,7 +99,7 @@ func updateService() (err error) {
 		return err
 	}
 	// 初始化服务
-	service, err := gApp.NewService(initSystem, "qbittorrent.service", serviceContent)
+	service, err := xApp.NewService(initSystem, "qbittorrent.service", serviceContent)
 	if err != nil {
 		return err
 	}
@@ -123,7 +124,7 @@ func reloadService() (err error) {
 		return err
 	}
 	// 初始化服务
-	service, err := gApp.NewService(initSystem, "qbittorrent.service", serviceContent)
+	service, err := xApp.NewService(initSystem, "qbittorrent.service", serviceContent)
 	if err != nil {
 		return err
 	}

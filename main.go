@@ -1,10 +1,12 @@
 package main
 
 import (
+	"context"
 	"fmt"
-	"github.com/urfave/cli/v2"
 	"log"
 	"os"
+
+	"github.com/urfave/cli/v3"
 )
 
 func main() {
@@ -23,7 +25,7 @@ func main() {
 					Destination: &tagName,
 				},
 			},
-			Action: func(ctx *cli.Context) (err error) {
+			Action: func(ctx context.Context, cmd *cli.Command) (err error) {
 				err = installBinaryFile(tagName)
 				if err != nil {
 					return err
@@ -34,7 +36,7 @@ func main() {
 		{
 			Name:  "uninstall",
 			Usage: "Remove config,cache and uninstall qBittorrent",
-			Action: func(ctx *cli.Context) (err error) {
+			Action: func(ctx context.Context, cmd *cli.Command) (err error) {
 				err = uninstallService()
 				if err != nil {
 					return err
@@ -53,7 +55,7 @@ func main() {
 					Destination: &tagName,
 				},
 			},
-			Action: func(ctx *cli.Context) (err error) {
+			Action: func(ctx context.Context, cmd *cli.Command) (err error) {
 				err = updateBinaryFile(tagName)
 				if err != nil {
 					return err
@@ -64,24 +66,24 @@ func main() {
 		{
 			Name:  "reload",
 			Usage: "Reload service",
-			Action: func(ctx *cli.Context) (err error) {
+			Action: func(ctx context.Context, cmd *cli.Command) (err error) {
 				return reloadService()
 			},
 		},
 	}
 
 	// 打印版本函数
-	cli.VersionPrinter = func(cCtx *cli.Context) {
-		fmt.Printf("%s", cCtx.App.Version)
+	cli.VersionPrinter = func(cmd *cli.Command) {
+		fmt.Printf("%s\n", cmd.Root().Version)
 	}
 
-	app := &cli.App{
+	cmd := &cli.Command{
 		Usage:    "qBittorrent quick install tool",
-		Version:  "v2.01",
+		Version:  "v2.10",
 		Commands: cmds,
 	}
 
-	err := app.Run(os.Args)
+	err := cmd.Run(context.Background(), os.Args)
 	if err != nil {
 		log.Fatalln(err)
 	}
