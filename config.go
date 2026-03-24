@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"strings"
 )
 
 //go:embed service/*
@@ -41,7 +42,7 @@ func GetService() (initSystem string, serviceContent []byte, err error) {
 	// 通过查找 /proc/1/comm 文件
 	b, err := os.ReadFile("/proc/1/comm")
 	if err == nil {
-		switch string(b) {
+		switch strings.TrimSuffix(string(b), "\n") {
 		case "systemd":
 			initSystem = "systemd"
 			serviceFile = "service/qbittorrent.service"
