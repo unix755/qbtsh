@@ -20,21 +20,33 @@ func installBinaryFile(tagName string) (err error) {
 }
 
 func installService() (err error) {
+	var serviceName string
 	// 获取初始化系统名字,对应的服务内容
 	initSystem, serviceContent, err := GetService()
 	if err != nil {
 		return err
 	}
+
+	// 获取服务名称
+	switch initSystem {
+	case "systemd":
+		serviceName = "qbittorrent.service"
+	default:
+		serviceName = "qbittorrent"
+	}
+
 	// 初始化服务
-	service, err := xApp.NewService(initSystem, "qbittorrent.service", serviceContent)
+	service, err := xApp.NewService(initSystem, serviceName, serviceContent)
 	if err != nil {
 		return err
 	}
+
 	// 服务安装
 	err = service.Install()
 	if err != nil {
 		return err
 	}
+
 	// 服务启动,开启自启
 	return service.Load()
 }
