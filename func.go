@@ -26,7 +26,6 @@ func installService() (err error) {
 	if err != nil {
 		return err
 	}
-
 	// 获取服务名称
 	switch initSystem {
 	case "systemd":
@@ -34,19 +33,16 @@ func installService() (err error) {
 	default:
 		serviceName = "qbittorrent"
 	}
-
 	// 初始化服务
 	service, err := xApp.NewService(initSystem, serviceName, serviceContent)
 	if err != nil {
 		return err
 	}
-
 	// 服务安装
 	err = service.Install()
 	if err != nil {
 		return err
 	}
-
 	// 服务启动,开启自启
 	return service.Load()
 }
@@ -60,13 +56,21 @@ func uninstallBinaryFile() (err error) {
 }
 
 func uninstallService() (err error) {
+	var serviceName string
 	// 获取初始化系统名字,对应的服务内容
 	initSystem, serviceContent, err := GetService()
 	if err != nil {
 		return err
 	}
+	// 获取服务名称
+	switch initSystem {
+	case "systemd":
+		serviceName = "qbittorrent.service"
+	default:
+		serviceName = "qbittorrent"
+	}
 	// 初始化服务
-	service, err := xApp.NewService(initSystem, "qbittorrent.service", serviceContent)
+	service, err := xApp.NewService(initSystem, serviceName, serviceContent)
 	if err != nil {
 		return err
 	}
@@ -80,13 +84,21 @@ func uninstallService() (err error) {
 }
 
 func updateBinaryFile(tagName string) (err error) {
+	var serviceName string
 	// 获取初始化系统名字,对应的服务内容
 	initSystem, serviceContent, err := GetService()
 	if err != nil {
 		return err
 	}
+	// 获取服务名称
+	switch initSystem {
+	case "systemd":
+		serviceName = "qbittorrent.service"
+	default:
+		serviceName = "qbittorrent"
+	}
 	// 初始化服务
-	service, err := xApp.NewService(initSystem, "qbittorrent.service", serviceContent)
+	service, err := xApp.NewService(initSystem, serviceName, serviceContent)
 	if err != nil {
 		return err
 	}
@@ -105,13 +117,21 @@ func updateBinaryFile(tagName string) (err error) {
 }
 
 func updateService() (err error) {
+	var serviceName string
 	// 获取初始化系统名字,对应的服务内容
 	initSystem, serviceContent, err := GetService()
 	if err != nil {
 		return err
 	}
+	// 获取服务名称
+	switch initSystem {
+	case "systemd":
+		serviceName = "qbittorrent.service"
+	default:
+		serviceName = "qbittorrent"
+	}
 	// 初始化服务
-	service, err := xApp.NewService(initSystem, "qbittorrent.service", serviceContent)
+	service, err := xApp.NewService(initSystem, serviceName, serviceContent)
 	if err != nil {
 		return err
 	}
@@ -130,13 +150,21 @@ func updateService() (err error) {
 }
 
 func reloadService() (err error) {
+	var serviceName string
 	// 获取初始化系统名字,对应的服务内容
 	initSystem, serviceContent, err := GetService()
 	if err != nil {
 		return err
 	}
+	// 获取服务名称
+	switch initSystem {
+	case "systemd":
+		serviceName = "qbittorrent.service"
+	default:
+		serviceName = "qbittorrent"
+	}
 	// 初始化服务
-	service, err := xApp.NewService(initSystem, "qbittorrent.service", serviceContent)
+	service, err := xApp.NewService(initSystem, serviceName, serviceContent)
 	if err != nil {
 		return err
 	}
