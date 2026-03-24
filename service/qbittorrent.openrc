@@ -1,5 +1,4 @@
 #!/sbin/openrc-run
-# https://github.com/OpenRC/openrc/blob/master/service-script-guide.md
 
 command="/usr/local/bin/qbittorrent-nox"
 command_args="--profile=/usr/local/etc/"
@@ -10,5 +9,4 @@ pidfile="/run/${RC_SVCNAME}.pid"
 depend() {
   need net
   use dns logger netmount
-  after sshd firewall
 }

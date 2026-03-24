@@ -2,28 +2,17 @@
 
 # PROVIDE: qbittorrent
 # REQUIRE: DAEMON
-# KEYWORD: shutdown
-#
-# Install rc.d service use the following command on freebsd
-#
-# mkdir /usr/local/etc/rc.d/
-# ee /usr/local/etc/rc.d/qbittorrent && chmod +x /usr/local/etc/rc.d/qbittorrent
-# service qbittorrent enable && service qbittorrent start
 
 . /etc/rc.subr
 
 name=qbittorrent
 rcvar=${name}_enable
-
 command="/usr/local/bin/${name}-nox"
 pidfile="/var/run/${name}.pid"
-
 start_cmd="${name}_start"
-
 qbittorrent_start() {
   echo "Starting ${name}."
   /usr/sbin/daemon -cf -p ${pidfile} ${command} --profile="/usr/local/etc/"
 }
-
 load_rc_config $name
 run_rc_command "$1"
